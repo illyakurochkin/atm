@@ -1,8 +1,13 @@
 import api from '../utils/api';
 
-const login = (card, pin) => api.post('/auth', {card, pin})
-  .then(response => response.data)
-  .catch(() => null);
+const authorizationHeader = (card, pin) => window.btoa(`${card}:${pin}`);
+
+const login = (card, pin) => {
+  const headers = {Authorization: authorizationHeader(card, pin)};
+  return api.get('/auth', {headers})
+    .then(response => response.data)
+    .catch(() => null);
+};
 
 export default {
   login,

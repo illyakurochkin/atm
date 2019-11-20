@@ -13,7 +13,7 @@ class Auth extends Component {
   onSubmit = ({card, pin}) => {
     const {login, setScreen} = this.props;
     setScreen('home');
-    // return login(card, pin);
+    return login(card, pin);
   };
 
   render() {
