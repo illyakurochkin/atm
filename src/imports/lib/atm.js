@@ -1,6 +1,6 @@
 import api from '../utils/api';
 
-const authorizationHeader = (card, pin) => window.btoa(`${card}:${pin}`);
+const authorizationHeader = (card, pin) => window.btoa(`Basic ${card}:${pin}`);
 
 const login = (card, pin) => {
   const headers = {Authorization: authorizationHeader(card, pin)};
