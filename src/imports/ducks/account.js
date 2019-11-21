@@ -15,10 +15,14 @@ const receiveAccountAction = account => ({
 export const loginAction = (card, pin) => async dispatch => {
   dispatch(startLoadingAction());
   const account = await atm.login(card, pin);
-  dispatch(receiveAccountAction(account));
+
+  if(account) {
+    dispatch(receiveAccountAction(account));
+  }
 };
 
-export const selectAccount = state => state.ducks.account;
+export const selectAccount = state => state.ducks.account.account;
+export const selectAccountLoading = state => state.ducks.account.loading;
 
 const INITIAL_STATE = null;
 

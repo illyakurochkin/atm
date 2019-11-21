@@ -6,13 +6,14 @@ import {selectScreen} from './imports/ducks/router';
 import {setScreenAction} from './imports/ducks/router';
 
 const Container = styled.div`
-  width: 1000px;
-  height: 600px;
+  width: 500px;
+  height: 700px;
   margin: 60px auto;
   border: 1px solid red;
   display: flex;
   justify-content: center;
-  align-items: center;
+  background-color: #4C4A48;
+  padding-top: 100px;
 `;
 
 const App = ({Screen, setScreen}) => (

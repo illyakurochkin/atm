@@ -24,7 +24,7 @@ class AuthForm extends Component {
     const {handleSubmit, card, pin, errors} = this.props;
 
     return (
-      <Form onSubmit={handleSubmit} error={errors.length}>
+      <Form inverted onSubmit={handleSubmit} error={errors.length}>
         <Field
           name="card"
           component={this.renderCardField}

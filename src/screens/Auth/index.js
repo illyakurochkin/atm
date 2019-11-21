@@ -3,27 +3,25 @@ import styled from 'styled-components';
 import AuthForm from './AuthForm';
 import {connect} from 'react-redux';
 import {loginAction} from '../../imports/ducks/account';
+import {Header} from 'semantic-ui-react';
 
 const Container = styled.div`
-  width: 300px;
-  height: 200px;
+  width: 400px;
 `;
 
-class Auth extends Component {
-  onSubmit = ({card, pin}) => {
-    const {login, setScreen} = this.props;
+const Auth = ({login, setScreen}) => {
+  const onSubmit = ({card, pin}) => {
     setScreen('home');
     return login(card, pin);
   };
 
-  render() {
-    return (
-      <Container>
-        <AuthForm onSubmit={this.onSubmit}/>
-      </Container>
-    );
-  }
-}
+  return (
+    <Container>
+      <Header inverted size="huge">Authorize</Header>
+      <AuthForm onSubmit={onSubmit}/>
+    </Container>
+  );
+};
 
 const mapDispatchToProps = {
   login: loginAction,
