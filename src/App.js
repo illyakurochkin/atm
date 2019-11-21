@@ -3,23 +3,30 @@ import styled from 'styled-components';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {selectScreen} from './imports/ducks/router';
-import {setScreenAction} from './imports/ducks/router';
+import {setScreenAction} from './imports/ducks/routerActions';
+
+const Wrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(33,30,27);
+  background: linear-gradient(25deg, rgba(33,30,27,1) 3%, rgba(57,49,54,1) 34%, rgba(59,43,70,1) 66%, rgba(55,23,98,1) 100%);
+`;
 
 const Container = styled.div`
-  width: 500px;
-  height: 700px;
+  width: 660px;
   margin: 60px auto;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
-  background-color: #4C4A48;
-  padding-top: 100px;
+  padding-top: 20px;
 `;
 
 const App = ({Screen, setScreen}) => (
-  <Container>
-    <Screen setScreen={setScreen}/>
-  </Container>
+  <Wrapper>
+    <Container>
+      <Screen setScreen={setScreen}/>
+    </Container>
+  </Wrapper>
 );
 
 App.propTypes = {

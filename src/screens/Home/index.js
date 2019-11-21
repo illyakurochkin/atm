@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Loader} from 'semantic-ui-react';
 import AccountInfo from './AccountInfo';
 import AccountMenu from './AccountMenu';
 import {selectAccount, selectAccountLoading} from '../../imports/ducks/account';
+import HomeHeader from './HomeHeader';
+
+const Container = styled.div`
+  width: 100%;
+`;
 
 class Home extends Component {
   render() {
@@ -15,10 +21,11 @@ class Home extends Component {
     }
 
     return (
-      <div>
+      <Container>
+        <HomeHeader />
         <AccountInfo account={account} />
         <AccountMenu account={account} />
-      </div>
+      </Container>
     );
   }
 }

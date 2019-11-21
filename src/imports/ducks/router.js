@@ -1,21 +1,28 @@
 import Auth from './../../screens/Auth';
 import Home from './../../screens/Home';
+import {selectAccount} from './account';
+import Transactions from '../../screens/Transactions';
 
 const SET_SCREEN = 'atm/router/SET_SCREEN';
-
-export const setScreenAction = screenName => ({
-  type: SET_SCREEN,
-  screenName,
-});
 
 export const screens = {
   auth: Auth,
   home: Home,
+  transactions: Transactions,
 };
 
-const INITIAL_STATE = 'auth';
+const INITIAL_STATE = 'transactions';
 
-export const selectScreen = state => screens[state.ducks.router];
+export const selectScreen = state => {
+  console.log('select screen', state);
+  const account = selectAccount(state);
+
+  if(!account) {
+    return Auth;
+  }
+
+  return screens[state.ducks.router];
+};
 
 export default (state = INITIAL_STATE, {type, screenName}) => {
   switch(type) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import CreditCard from '../../imports/components/CreditCard';
 import {Header, Icon} from 'semantic-ui-react';
 
@@ -8,17 +9,46 @@ const renderCard = ({number: card, client}) => {
   return <CreditCard card={card} name={name} />;
 };
 
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const SummaryContainer = styled.div`
+  padding-bottom: 20px;
+  padding-right: 40px;
+`;
+
+const Container = styled.div`
+  padding-left: 20px;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Label = styled.span`
+  padding: 0 20px;
+`;
+
 const renderAmount = ({amount}) => (
   <Header inverted>
-    <Icon name="money bill alternate outline" />
-    {amount}$
+    <Container>
+      <Icon name="money bill alternate outline" />
+      <Label>Amount:</Label>
+      {amount}$
+    </Container>
   </Header>
 );
 
 const renderType = ({type}) => (
   <Header inverted>
-    <Icon name="credit card outline" />
-    {type}
+    <Container>
+      <Icon name="credit card outline" />
+      <Label>Type:</Label>
+      {type.toLowerCase()}
+    </Container>
   </Header>
 );
 
@@ -29,19 +59,24 @@ const renderCreditLimit = ({type, creditLimit}) => {
 
   return (
     <Header inverted>
-      <Icon name="" />
-      credit limit - {creditLimit}$
+      <Container>
+        <Icon name="dont" />
+        <Label>Credit limit:</Label>
+        {creditLimit}$
+      </Container>
     </Header>
   );
 };
 
 const AccountInfo = ({account}) => (
-  <div>
+  <Wrapper>
+    <SummaryContainer>
+      {renderAmount(account)}
+      {renderType(account)}
+      {renderCreditLimit(account)}
+    </SummaryContainer>
     {renderCard(account)}
-    {renderAmount(account)}
-    {renderType(account)}
-    {renderCreditLimit(account)}
-  </div>
+  </Wrapper>
 );
 
 AccountInfo.propTypes = {
