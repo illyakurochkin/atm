@@ -27,7 +27,7 @@ class TransactionsList extends Component {
   render() {
     return (
       <div>
-        <Header inverted size="big" style={{paddingLeft: 20}}>Transactions list</Header>
+        <Header inverted size="medium" style={{paddingLeft: 20}}>Transactions list</Header>
         {this.renderList()}
       </div>
     );
