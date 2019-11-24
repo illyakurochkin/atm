@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import {Button as SemanticButton, Icon} from 'semantic-ui-react';
 import {fetchTransactionsAction, selectTransactionsLoading} from '../../imports/ducks/transactions';
-import {setScreenAction} from '../../imports/ducks/routerActions';
+import {setScreenAction} from '../../imports/ducks/router/actions';
 import {connect} from 'react-redux';
 
 const Container = styled.div`

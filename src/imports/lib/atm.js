@@ -1,7 +1,6 @@
 import axios from 'axios';
 import api from '../utils/api';
 
-
 let headers = '';
 
 const authorizationHeader = (card, pin) => window.btoa(`${card}:${pin}`);

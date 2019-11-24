@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import AuthForm from './AuthForm';
 import {connect} from 'react-redux';
@@ -10,10 +10,8 @@ const Container = styled.div`
 `;
 
 const Auth = ({login, setScreen}) => {
-  const onSubmit = ({card, pin}) => {
-    setScreen('home');
-    return login(card, pin);
-  };
+  const onSubmit = ({card, pin}) => login(card, pin)
+    .then(() => setScreen('home'));
 
   return (
     <Container>

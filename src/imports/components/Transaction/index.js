@@ -23,7 +23,7 @@ class Transaction extends Component {
   }
 
   render() {
-    const {transaction: {source, amount, commission}} = this.props;
+    const {transaction: {source, amount, commission, dateTime}} = this.props;
 
     return (
       <Header inverted>
@@ -33,6 +33,7 @@ class Transaction extends Component {
             <div>{source}</div>
             <div>{`Amount: ${amount}$`}</div>
             <div>{`Commission: ${commission}$`}</div>
+            <div>{`Date: ${dateTime}`}</div>
           </Content>
         </Grid>
       </Header>

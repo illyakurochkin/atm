@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {selectScreen} from './imports/ducks/router';
-import {setScreenAction} from './imports/ducks/routerActions';
+import {setScreenAction} from './imports/ducks/router/actions';
 
 const Wrapper = styled.div`
   position: absolute;

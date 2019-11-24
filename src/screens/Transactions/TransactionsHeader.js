@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Button, Header, Icon} from 'semantic-ui-react';
-import {setScreenAction} from '../../imports/ducks/routerActions';
+import {setScreenAction} from '../../imports/ducks/router/actions';
 
 const Container = styled.div`
   display: flex;
