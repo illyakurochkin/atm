@@ -6,7 +6,11 @@ let headers = '';
 const authorizationHeader = (card, pin) => window.btoa(`${card}:${pin}`);
 
 const login = (card, pin) => {
-  axios.defaults.headers = {Authorization: 'Basic ' + authorizationHeader(card, pin)};
+  axios.defaults.headers = {
+    Authorization: 'Basic ' + authorizationHeader(card, pin),
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  };
   return api.get('/auth')
     .then(response => response.data)
     .catch((e) => {
