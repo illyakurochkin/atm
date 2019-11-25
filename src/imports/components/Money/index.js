@@ -47,7 +47,7 @@ class Money extends Component {
 
     return (
       <Container>
-        <Image src="https://imgur.com/ZuzQGGl.png" />
+        <Image src="https://imgur.com/OUSqpeg.png" />
         <Sign1>{amount}</Sign1>
         <Sign2>{amount}</Sign2>
         <Sign3>{amount}</Sign3>
