@@ -31,8 +31,8 @@ class Transaction extends Component {
           {this.renderIcon()}
           <Content>
             <div>{source}</div>
-            <div>{`Amount: ${amount}$`}</div>
-            <div>{`Commission: ${commission}$`}</div>
+            <div>{`Amount: $${amount}`}</div>
+            <div>{`Commission: $${commission}`}</div>
             <div>{`Date: ${dateTime}`}</div>
           </Content>
         </Grid>

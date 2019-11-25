@@ -5,7 +5,7 @@ import {downloadWithdrawal} from '../../imports/utils/withdrawal';
 
 class CreateTransaction extends Component {
   componentDidMount() {
-    downloadWithdrawal(100);
+    downloadWithdrawal(123);
   }
 
   render() {

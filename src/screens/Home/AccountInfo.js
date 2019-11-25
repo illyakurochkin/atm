@@ -37,7 +37,7 @@ const renderAmount = ({amount}) => (
     <Container>
       <Icon name="money bill alternate outline" />
       <Label>Amount:</Label>
-      {amount}$
+      ${amount}
     </Container>
   </Header>
 );
@@ -62,7 +62,7 @@ const renderCreditLimit = ({type, creditLimit}) => {
       <Container>
         <Icon name="dont" />
         <Label>Credit limit:</Label>
-        {creditLimit}$
+        ${creditLimit}
       </Container>
     </Header>
   );
