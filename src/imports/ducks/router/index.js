@@ -13,7 +13,7 @@ export const screens = {
   createTransaction: CreateTransaction,
 };
 
-const INITIAL_STATE = 'home';
+const INITIAL_STATE = 'auth';
 
 export const selectScreen = state => {
   console.log('select screen', state);
