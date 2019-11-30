@@ -4,13 +4,16 @@ let headers = '';
 
 const authorizationHeader = (card, pin) => window.btoa(`${card}:${pin}`);
 
-const login = (card, pin) => {
+const saveHeaders = (card, pin) => {
   headers = {
     Authorization: 'Basic ' + authorizationHeader(card, pin),
     Accept: 'application/json',
     'Content-Type': 'application/json',
   };
+};
 
+const login = (card, pin) => {
+  saveHeaders(card, pin);
   return api.get('/auth', {headers})
     .then(response => response.data)
     .then(data => console.log('/auth', data) || data)
