@@ -33,7 +33,7 @@ const Button = styled(SemanticButton)`
 class AccountMenu extends Component {
   onTransactionsClick = async () => {
     const {fetchTransactions, setScreen} = this.props;
-    // await fetchTransactions();
+    await fetchTransactions();
     setScreen('transactions');
   };
 
