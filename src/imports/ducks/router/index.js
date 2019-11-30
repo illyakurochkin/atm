@@ -3,6 +3,7 @@ import Home from './../../../screens/Home';
 import {selectAccount} from './../account';
 import Transactions from '../../../screens/Transactions';
 import CreateTransaction from '../../../screens/CreateTransaction';
+import GetMoney from '../../../screens/GetMoney';
 
 const SET_SCREEN = 'atm/router/SET_SCREEN';
 
@@ -11,9 +12,10 @@ export const screens = {
   home: Home,
   transactions: Transactions,
   createTransaction: CreateTransaction,
+  getMoney: GetMoney,
 };
 
-const INITIAL_STATE = 'auth';
+const INITIAL_STATE = 'home';
 
 export const selectScreen = state => {
   console.log('select screen', state);

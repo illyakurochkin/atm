@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import CreateTransactionHeader from './CreateTransactionHeader';
 import CreateTransactionForm from './CreateTransactionForm';
 import {connect, useDispatch} from 'react-redux';
 import atm from './../../imports/lib/atm';
 import {useAlert} from 'react-alert';
 import {setScreenAction} from '../../imports/ducks/router/actions';
+import ScreenHeader from '../../imports/components/ScreenHeader';
+import {TransactionsButton} from '../../imports/components/buttons';
 
 const Container = styled.div`
   width: 100%;
@@ -22,7 +23,9 @@ const CreateTransaction = () => {
 
   return (
     <Container>
-      <CreateTransactionHeader/>
+      <ScreenHeader title="Create Transaction">
+        <TransactionsButton />
+      </ScreenHeader>
       <CreateTransactionForm onSubmit={onSubmit}/>
     </Container>
   );

@@ -6,7 +6,8 @@ import {Loader} from 'semantic-ui-react';
 import AccountInfo from './AccountInfo';
 import AccountMenu from './AccountMenu';
 import {selectAccount, selectAccountLoading} from '../../imports/ducks/account';
-import HomeHeader from './HomeHeader';
+import ScreenHeader from '../../imports/components/ScreenHeader';
+import {LogOutButton} from '../../imports/components/buttons';
 
 const Container = styled.div`
   width: 100%;
@@ -22,7 +23,9 @@ class Home extends Component {
 
     return (
       <Container>
-        <HomeHeader />
+        <ScreenHeader title="Home">
+          <LogOutButton/>
+        </ScreenHeader>
         <AccountInfo account={account} />
         <AccountMenu account={account} />
       </Container>

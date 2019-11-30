@@ -52,7 +52,7 @@ const TEST_STATE = {
   },
 };
 
-export default (state = INITIAL_STATE, {type, account}) => {
+export default (state = TEST_STATE, {type, account}) => {
   switch (type) {
     case START_LOADING:
       return {...state, loading: true};

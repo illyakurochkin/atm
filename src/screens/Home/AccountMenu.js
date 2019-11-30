@@ -38,7 +38,7 @@ class AccountMenu extends Component {
   };
 
   render() {
-    const {transactionsLoading} = this.props;
+    const {transactionsLoading, setScreen} = this.props;
 
     return (
       <Container>
@@ -50,7 +50,7 @@ class AccountMenu extends Component {
             </Button>
           </ButtonContainer>
           <ButtonContainer>
-            <Button inverted size="huge">
+            <Button inverted size="huge" onClick={() => setScreen('getMoney')}>
               <Icon name="angle down" />
               Get money
             </Button>
