@@ -31,7 +31,7 @@ export const validateReceiverCard = myCard => value => {
 };
 
 export const validateAmount = value => {
-  if(!value === 0) {
+  if(!value) {
     return 'amount can not be 0';
   }
 

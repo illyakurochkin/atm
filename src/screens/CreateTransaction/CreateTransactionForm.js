@@ -51,6 +51,5 @@ const renderAmountField = (field) => (
   </Form.Field>
 );
 
-
 export default reduxForm({form})(CreateTransactionForm);
 
