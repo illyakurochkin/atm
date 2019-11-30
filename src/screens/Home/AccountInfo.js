@@ -68,16 +68,20 @@ const renderCreditLimit = ({type, creditLimit}) => {
   );
 };
 
-const AccountInfo = ({account}) => (
-  <Wrapper>
-    <SummaryContainer>
-      {renderAmount(account)}
-      {renderType(account)}
-      {renderCreditLimit(account)}
-    </SummaryContainer>
-    {renderCard(account)}
-  </Wrapper>
-);
+const AccountInfo = ({account}) => {
+  console.log('[ACCOUNT]', account);
+
+  return (
+    <Wrapper>
+      <SummaryContainer>
+        {renderAmount(account)}
+        {renderType(account)}
+        {renderCreditLimit(account)}
+      </SummaryContainer>
+      {renderCard(account)}
+    </Wrapper>
+  );
+};
 
 AccountInfo.propTypes = {
   account: PropTypes.object.isRequired,
