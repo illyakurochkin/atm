@@ -15,7 +15,7 @@ const receiveAccountAction = account => ({
 export const loginAction = (card, pin) => async dispatch => {
   dispatch(startLoadingAction());
   const account = await atm.login(card, pin);
-
+  console.log('received account', account);
   if(account) {
     dispatch(receiveAccountAction(account));
   }
