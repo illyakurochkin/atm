@@ -17,3 +17,29 @@ export const validatePin = value => {
     return 'pin is not valid';
   }
 };
+
+export const validateReceiverCard = myCard => value => {
+  const cardValidationError = validateCard(value);
+
+  if(cardValidationError) {
+    return cardValidationError;
+  }
+
+  if(myCard === value) {
+    return 'you can\'t send money to your current account';
+  }
+};
+
+export const validateAmount = value => {
+  if(!value === 0) {
+    return 'amount can not be 0';
+  }
+
+  if(value < 0) {
+    return 'amount can not be negative';
+  }
+
+  if(!value.match(/^[1-9][0-9]*$/)) {
+    return 'amount should be a valid number';
+  }
+};

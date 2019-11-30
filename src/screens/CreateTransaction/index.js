@@ -1,19 +1,24 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Money from '../../imports/components/Money';
-import {downloadWithdrawal} from '../../imports/utils/withdrawal';
+import CreateTransactionHeader from './CreateTransactionHeader';
+import CreateTransactionForm from './CreateTransactionForm';
+
+const Container = styled.div`
+  width: 100%:
+`;
 
 class CreateTransaction extends Component {
-  componentDidMount() {
-    downloadWithdrawal(123);
-  }
+  onSubmit = (values) => {
+    console.log(values);
+  };
 
   render() {
     return (
-      <div>
-        CREATE TRANSACTION
-        <Money amount={100} />
-      </div>
+      <Container>
+        <CreateTransactionHeader />
+        <CreateTransactionForm onSubmit={this.onSubmit} />
+      </Container>
     );
   }
 }
