@@ -1,4 +1,3 @@
-import axios from 'axios';
 import api from '../utils/api';
 
 let headers = '';
@@ -15,13 +14,7 @@ const login = (card, pin) => {
   return api.get('/auth', {headers})
     .then(response => response.data)
     .then(data => JSON.parse(`${data}`))
-    .catch((e) => {
-      console.log('ERR', e);
-      console.log('ERR', Object.keys(e));
-      console.log('ERR', Object.keys(e).map(k => e[k]));
-      console.log('ERR', JSON.stringify(e.toJSON()));
-      return null;
-    });
+    .catch(() => null);
 };
 
 const transactions = {
