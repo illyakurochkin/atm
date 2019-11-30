@@ -1,24 +1,10 @@
 import React from 'react';
-import {connect, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {Field, formValueSelector, getFormSyncErrors, reduxForm} from 'redux-form';
 import {Form} from 'semantic-ui-react';
 import {normalizeAmount, normalizeCard} from '../../imports/utils/forms/normalizers';
 import {validateAmount, validateReceiverCard} from '../../imports/utils/forms/validators';
 import {selectAccount} from '../../imports/ducks/account';
-
-const renderReceiverCardField = (field) => (
-  <Form.Field>
-    <label>RECEIVER CARD NUMBER</label>
-    <input {...field.input} placeholder="Enter receiver card number"/>
-  </Form.Field>
-);
-
-const renderAmountField = (field) => (
-  <Form.Field>
-    <label>MONEY AMOUNT TO SEND</label>
-    <input {...field.input} placeholder="Enter money amount to send"/>
-  </Form.Field>
-);
 
 const form = 'createTransaction';
 const selector = formValueSelector(form);
@@ -50,6 +36,21 @@ const CreateTransactionForm = ({handleSubmit}) => {
     </Form>
   );
 };
+
+const renderReceiverCardField = (field) => (
+  <Form.Field>
+    <label>RECEIVER CARD NUMBER</label>
+    <input {...field.input} placeholder="Enter receiver card number"/>
+  </Form.Field>
+);
+
+const renderAmountField = (field) => (
+  <Form.Field>
+    <label>MONEY AMOUNT TO SEND</label>
+    <input {...field.input} placeholder="Enter money amount to send"/>
+  </Form.Field>
+);
+
 
 export default reduxForm({form})(CreateTransactionForm);
 
