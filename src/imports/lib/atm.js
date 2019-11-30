@@ -30,6 +30,14 @@ const transactions = {
     .then(mapResponseToTransactions)
     .then(data => console.log('/transactions', data) || data)
     .catch(e => console.log('/transactions', e)),
+
+  create: ({receiverCard: receiverNumber, amount}) =>
+    api.post('/transaction/transfer', {}, {params: {receiverNumber, amount}, headers})
+      .then(response => response.data)
+      .then(data => console.log('/transaction/transfer', data))
+      .catch(e => {
+        throw e.message;
+      }),
 };
 
 export default {

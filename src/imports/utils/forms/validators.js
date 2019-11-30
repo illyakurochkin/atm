@@ -21,10 +21,12 @@ export const validatePin = value => {
 export const validateReceiverCard = myCard => value => {
   const cardValidationError = validateCard(value);
 
+
   if(cardValidationError) {
     return cardValidationError;
   }
 
+  console.log({myCard, value});
   if(myCard === value) {
     return 'you can\'t send money to your current account';
   }
@@ -32,7 +34,7 @@ export const validateReceiverCard = myCard => value => {
 
 export const validateAmount = value => {
   if(!value) {
-    return 'amount can not be 0';
+    return 'amount is required';
   }
 
   if(value < 0) {

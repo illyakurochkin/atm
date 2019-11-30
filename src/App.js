@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {selectScreen} from './imports/ducks/router';
 import {setScreenAction} from './imports/ducks/router/actions';
+import AlertProvider from './imports/components/AlertProvider';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -22,11 +23,13 @@ const Container = styled.div`
 `;
 
 const App = ({Screen, setScreen}) => (
-  <Wrapper>
-    <Container>
-      <Screen setScreen={setScreen}/>
-    </Container>
-  </Wrapper>
+  <AlertProvider>
+    <Wrapper>
+      <Container>
+        <Screen setScreen={setScreen}/>
+      </Container>
+    </Wrapper>
+  </AlertProvider>
 );
 
 App.propTypes = {
