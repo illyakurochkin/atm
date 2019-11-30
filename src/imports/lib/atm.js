@@ -9,7 +9,7 @@ const saveHeaders = (card, pin) => {
     Authorization: 'Basic ' + authorizationHeader(card, pin),
     Accept: 'application/json',
     'Content-Type': 'application/json',
-  };
+  }
 };
 
 const login = (card, pin) => {

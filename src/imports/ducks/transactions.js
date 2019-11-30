@@ -57,12 +57,12 @@ const INITIAL_STATE = {
 //   ],
 // };
 
-export default (state = INITIAL_STATE, {type, tranactions}) => {
+export default (state = INITIAL_STATE, {type, transactions}) => {
   switch (type) {
     case START_LOADING:
       return {...state, loading: true};
     case RECEIVE_TRANSACTIONS:
-      return {...state, loading: false, tranactions};
+      return {...state, loading: false, transactions};
     default:
       return state;
   }
