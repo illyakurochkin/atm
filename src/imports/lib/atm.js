@@ -14,7 +14,6 @@ const login = (card, pin) => {
   return api.get('/auth', {headers})
     .then(response => response.data)
     .then(data => console.log('/auth', data) || data)
-    .then(data => JSON.parse(`${data}`))
     .catch(e => console.log(e));
 };
 
