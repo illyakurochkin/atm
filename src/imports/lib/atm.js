@@ -20,7 +20,7 @@ const login = (card, pin) => {
 const transactions = {
   get: () => api.get('/transactions', {headers})
     .then(response => response.data)
-    .catch(() => []),
+    .catch(e => console.log(e)),
 };
 
 export default {
