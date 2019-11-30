@@ -30,8 +30,6 @@ const forceDownload = (url, fileName) => {
 
 export const downloadWithdrawal = (amount) => {
   const html = renderToString(<Money amount={amount}/>);
-  console.log({html});
-
   return service.post('/image', {html})
     .then(response => response.data.url)
     .then(url => forceDownload(url, `${amount}$.png`));

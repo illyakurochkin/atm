@@ -15,18 +15,9 @@ export const screens = {
   getMoney: GetMoney,
 };
 
-const INITIAL_STATE = 'home';
+const INITIAL_STATE = 'auth';
 
-export const selectScreen = state => {
-  console.log('select screen', state);
-  const account = selectAccount(state);
-
-  if(!account) {
-    return Auth;
-  }
-
-  return screens[state.ducks.router];
-};
+export const selectScreen = state => selectAccount(state) ? Auth : screens[state.ducks.router];
 
 export default (state = INITIAL_STATE, {type, screenName}) => {
   switch(type) {

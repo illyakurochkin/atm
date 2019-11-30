@@ -26,7 +26,6 @@ export const validateReceiverCard = myCard => value => {
     return cardValidationError;
   }
 
-  console.log({myCard, value});
   if(myCard === value) {
     return 'you can\'t send money to your current account';
   }

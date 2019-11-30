@@ -6,7 +6,7 @@ import {Header, Icon} from 'semantic-ui-react';
 
 const renderCard = ({number: card, client}) => {
   const name = `${client.firstname} ${client.lastname}`;
-  return <CreditCard card={card} name={name} />;
+  return <CreditCard card={card} name={name}/>;
 };
 
 const Wrapper = styled.div`
@@ -35,7 +35,7 @@ const Label = styled.span`
 const renderAmount = ({amount}) => (
   <Header inverted>
     <Container>
-      <Icon name="money bill alternate outline" />
+      <Icon name="money bill alternate outline"/>
       <Label>Amount:</Label>
       ${amount}
     </Container>
@@ -45,7 +45,7 @@ const renderAmount = ({amount}) => (
 const renderType = ({type}) => (
   <Header inverted>
     <Container>
-      <Icon name="credit card outline" />
+      <Icon name="credit card outline"/>
       <Label>Type:</Label>
       {type.toLowerCase()}
     </Container>
@@ -53,14 +53,14 @@ const renderType = ({type}) => (
 );
 
 const renderCreditLimit = ({type, creditLimit}) => {
-  if(type !== "CREDIT") {
+  if (type !== 'CREDIT') {
     return null;
   }
 
   return (
     <Header inverted>
       <Container>
-        <Icon name="dont" />
+        <Icon name="dont"/>
         <Label>Credit limit:</Label>
         ${creditLimit}
       </Container>
@@ -68,20 +68,16 @@ const renderCreditLimit = ({type, creditLimit}) => {
   );
 };
 
-const AccountInfo = ({account}) => {
-  console.log('[ACCOUNT]', account);
-
-  return (
-    <Wrapper>
-      <SummaryContainer>
-        {renderAmount(account)}
-        {renderType(account)}
-        {renderCreditLimit(account)}
-      </SummaryContainer>
-      {renderCard(account)}
-    </Wrapper>
-  );
-};
+const AccountInfo = ({account}) => (
+  <Wrapper>
+    <SummaryContainer>
+      {renderAmount(account)}
+      {renderType(account)}
+      {renderCreditLimit(account)}
+    </SummaryContainer>
+    {renderCard(account)}
+  </Wrapper>
+);
 
 AccountInfo.propTypes = {
   account: PropTypes.object.isRequired,

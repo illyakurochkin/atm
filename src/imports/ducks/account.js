@@ -1,4 +1,5 @@
 import atm from '../lib/atm';
+import {setScreenAction} from './router/actions';
 
 const START_LOADING = 'atm/account/START_LOADING';
 const RECEIVE_ACCOUNT = 'atm/account/RECEIVE_ACCOUNT';
@@ -15,13 +16,16 @@ const receiveAccountAction = account => ({
 export const loginAction = (card, pin) => async dispatch => {
   dispatch(startLoadingAction());
   const account = await atm.login(card, pin);
-  console.log('received account', account);
+
   if(account) {
     dispatch(receiveAccountAction(account));
   }
 };
 
-export const logoutAction = () => receiveAccountAction(null);
+export const logoutAction = () => (dispatch) => {
+  dispatch(setScreenAction('auth'));
+  return receiveAccountAction(null);
+};
 
 export const selectAccount = state => state.ducks.account.account;
 export const selectAccountLoading = state => state.ducks.account.loading;
@@ -52,7 +56,7 @@ const TEST_STATE = {
   },
 };
 
-export default (state = TEST_STATE, {type, account}) => {
+export default (state = INITIAL_STATE, {type, account}) => {
   switch (type) {
     case START_LOADING:
       return {...state, loading: true};
