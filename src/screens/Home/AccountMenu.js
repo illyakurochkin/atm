@@ -4,6 +4,7 @@ import {Button as SemanticButton, Icon} from 'semantic-ui-react';
 import {fetchTransactionsAction, selectTransactionsLoading} from '../../imports/ducks/transactions';
 import {setScreenAction} from '../../imports/ducks/router/actions';
 import {connect} from 'react-redux';
+import {selectAccount} from '../../imports/ducks/account';
 
 const Container = styled.div`
   display: flex;
@@ -31,6 +32,31 @@ const Button = styled(SemanticButton)`
 `;
 
 class AccountMenu extends Component {
+  renderGetPutMoney() {
+    const {setScreen, account} = this.props;
+
+    if (account.type === 'DEPOSIT') {
+      return null;
+    }
+
+    return (
+      <Row>
+        <ButtonContainer>
+          <Button inverted size="huge">
+            <Icon name="angle up" />
+            Put money
+          </Button>
+        </ButtonContainer>
+        <ButtonContainer>
+          <Button inverted size="huge" onClick={() => setScreen('getMoney')}>
+            <Icon name="angle down" />
+            Get money
+          </Button>
+        </ButtonContainer>
+      </Row>
+    );
+  }
+
   onTransactionsClick = async () => {
     const {fetchTransactions, setScreen} = this.props;
     await fetchTransactions();
@@ -38,24 +64,11 @@ class AccountMenu extends Component {
   };
 
   render() {
-    const {transactionsLoading, setScreen} = this.props;
+    const {transactionsLoading} = this.props;
 
     return (
       <Container>
-        <Row>
-          <ButtonContainer>
-            <Button inverted size="huge">
-              <Icon name="angle up" />
-              Put money
-            </Button>
-          </ButtonContainer>
-          <ButtonContainer>
-            <Button inverted size="huge" onClick={() => setScreen('getMoney')}>
-              <Icon name="angle down" />
-              Get money
-            </Button>
-          </ButtonContainer>
-        </Row>
+        {this.renderGetPutMoney()}
         <Row>
           <ButtonContainer>
             <Button loading={transactionsLoading} inverted size="huge" onClick={this.onTransactionsClick}>
@@ -72,6 +85,7 @@ class AccountMenu extends Component {
 AccountMenu.propTypes = {};
 
 const mapStateToProps = state => ({
+  account: selectAccount(state),
   transactionsLoading: selectTransactionsLoading(state),
 });
 
