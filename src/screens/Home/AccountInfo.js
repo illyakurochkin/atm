@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import _ from 'lodash';
 import CreditCard from '../../imports/components/CreditCard';
 import {Header, Icon} from 'semantic-ui-react';
 
@@ -68,8 +69,8 @@ const renderCreditLimit = ({type, creditLimit}) => {
   );
 };
 
-const renderSupplier = ({supplier: {name}}) => {
-  if (!name) {
+const renderSupplier = ({supplier}) => {
+  if (!_.get(supplier, 'name')) {
     return null;
   }
 
@@ -78,7 +79,7 @@ const renderSupplier = ({supplier: {name}}) => {
       <Container>
         <Icon name="hand spock outline"/>
         <Label>Supplier name:</Label>
-        {name}
+        {supplier.name}
       </Container>
     </Header>
   );
