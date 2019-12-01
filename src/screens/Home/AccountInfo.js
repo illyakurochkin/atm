@@ -68,12 +68,29 @@ const renderCreditLimit = ({type, creditLimit}) => {
   );
 };
 
+const renderSupplier = ({supplierName}) => {
+  if (!supplierName) {
+    return null;
+  }
+
+  return (
+    <Header inverted>
+      <Container>
+        <Icon name="hand spock outline"/>
+        <Label>Supplier name:</Label>
+        {supplierName}
+      </Container>
+    </Header>
+  );
+};
+
 const AccountInfo = ({account}) => (
   <Wrapper>
     <SummaryContainer>
       {renderAmount(account)}
       {renderType(account)}
       {renderCreditLimit(account)}
+      {renderSupplier(account)}
     </SummaryContainer>
     {renderCard(account)}
   </Wrapper>
