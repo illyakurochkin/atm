@@ -63,7 +63,7 @@ const renderCreditLimit = ({type, creditLimit}) => {
       <Container>
         <Icon name="dont"/>
         <Label>Credit limit:</Label>
-        ${Number(creditLimit / 100).toFixed()}
+        ${Number(creditLimit / 100).toFixed(2)}
       </Container>
     </Header>
   );
