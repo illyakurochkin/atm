@@ -15,10 +15,12 @@ const saveHeaders = (card, pin) => {
 
 const login = (card, pin) => {
   saveHeaders(card, pin);
-  return api.get('/auth', {headers})
-    .then(response => response.data)
-    .catch(e => console.log(e));
+  return fetchAccount();
 };
+
+const fetchAccount = () => api.get('/auth', {headers})
+  .then(response => response.data)
+  .catch(e => console.log(e));
 
 const getMoney = (amount) => api.post('/transaction/withdraw', {}, {params: {atmId: 1, amount: amount * 100}, headers})
   .catch(e => {
@@ -56,6 +58,7 @@ const transactions = {
 
 export default {
   login,
+  fetchAccount,
   getMoney,
   putMoney,
   transactions,

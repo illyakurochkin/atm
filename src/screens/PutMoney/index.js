@@ -7,6 +7,7 @@ import atm from './../../imports/lib/atm';
 import {useAlert} from 'react-alert';
 import {useDispatch} from 'react-redux';
 import {setScreenAction} from '../../imports/ducks/router/actions';
+import {fetchAccount, fetchAccountAction} from '../../imports/ducks/account';
 
 const Container = styled.div`
   width: 100%;
@@ -20,6 +21,7 @@ const PutMoney = () => {
   const onSubmit = ({amount}) => {
     setLoading(true);
     return atm.putMoney(amount)
+      .then(() => dispatch(fetchAccountAction()))
       .then(() => dispatch(setScreenAction('home')))
       .then(() => alert.success(`you have put $${amount}`))
       .catch(e => alert.error(e));

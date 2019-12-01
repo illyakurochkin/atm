@@ -25,6 +25,15 @@ export const loginAction = (card, pin) => async dispatch => {
   }
 };
 
+export const fetchAccountAction = () => async dispatch => {
+  dispatch(startLoadingAction());
+  const account = await atm.fetchAccount();
+
+  if(account) {
+    dispatch(receiveAccountAction(account));
+  }
+};
+
 export const logoutAction = () => (dispatch) => {
   dispatch(setScreenAction('auth'));
   return receiveAccountAction(null);

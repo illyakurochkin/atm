@@ -8,6 +8,7 @@ import {useAlert} from 'react-alert';
 import {useDispatch} from 'react-redux';
 import {downloadWithdrawal} from '../../imports/utils/withdrawal';
 import {setScreenAction} from '../../imports/ducks/router/actions';
+import {fetchAccountAction} from '../../imports/ducks/account';
 
 const Container = styled.div`
   width: 100%;
@@ -22,6 +23,7 @@ const GetMoney = () => {
     setLoading(true);
     return atm.getMoney(amount)
       .then(() => downloadWithdrawal(amount))
+      .then(() => dispatch(fetchAccountAction()))
       .then(() => dispatch(setScreenAction('home')))
       .then(() => alert.success(`you have received $${amount}`))
       .catch(e => alert.error(e));

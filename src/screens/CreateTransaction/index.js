@@ -7,6 +7,7 @@ import {useAlert} from 'react-alert';
 import {setScreenAction} from '../../imports/ducks/router/actions';
 import ScreenHeader from '../../imports/components/ScreenHeader';
 import {TransactionsButton} from '../../imports/components/buttons';
+import {fetchTransactionsAction} from '../../imports/ducks/transactions';
 
 const Container = styled.div`
   width: 100%;
@@ -17,6 +18,7 @@ const CreateTransaction = () => {
   const alert = useAlert();
 
   const onSubmit = (values) => atm.transactions.create(values)
+    .then(() => dispatch(fetchTransactionsAction()))
     .then(() => dispatch(setScreenAction('transactions')))
     .then(() => alert.success('transaction was created'))
     .catch(message => alert.error(message));
