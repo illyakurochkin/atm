@@ -17,7 +17,7 @@ export const screens = {
 
 const INITIAL_STATE = 'auth';
 
-export const selectScreen = state => selectAccount(state) ? Auth : screens[state.ducks.router];
+export const selectScreen = state => selectAccount(state) ? screens[state.ducks.router] : Auth;
 
 export default (state = INITIAL_STATE, {type, screenName}) => {
   switch(type) {

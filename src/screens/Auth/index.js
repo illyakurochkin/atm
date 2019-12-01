@@ -10,11 +10,8 @@ const Container = styled.div`
 `;
 
 const Auth = ({login, setScreen}) => {
-  const onSubmit = ({card, pin}) => {
-
-    return login(card, pin)
-      .then(() => setScreen('home'));
-  };
+  const onSubmit = ({card, pin}) => login(card, pin)
+    .then(() => setScreen('home'));
 
   return (
     <Container>
