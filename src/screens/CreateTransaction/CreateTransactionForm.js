@@ -9,7 +9,7 @@ import {selectAccount} from '../../imports/ducks/account';
 import store from '../../imports/ducks/store';
 
 const validateCard = (receiverCard) => {
-  const myCard = selectAccount(store().getState()).number;
+  const myCard = selectAccount(store.getState()).number;
   return validateReceiverCard(myCard)(receiverCard);
 };
 
