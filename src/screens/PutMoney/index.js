@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import ScreenHeader from '../../imports/components/ScreenHeader';
 import {HomeButton} from '../../imports/components/buttons';
-import GetMoneyForm from './GetMoneyForm';
+import PutMoneyForm from './PutMoneyForm';
 import atm from './../../imports/lib/atm';
 import {useAlert} from 'react-alert';
 import {useDispatch} from 'react-redux';
@@ -30,7 +30,7 @@ const PutMoney = () => {
       <ScreenHeader title="Put Money">
         <HomeButton loading={loading}/>
       </ScreenHeader>
-      <GetMoneyForm onSubmit={onSubmit}/>
+      <PutMoneyForm onSubmit={onSubmit}/>
     </Container>
   );
 };
