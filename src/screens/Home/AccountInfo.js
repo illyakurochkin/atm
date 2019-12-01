@@ -68,8 +68,8 @@ const renderCreditLimit = ({type, creditLimit}) => {
   );
 };
 
-const renderSupplier = ({supplierName}) => {
-  if (!supplierName) {
+const renderSupplier = ({supplier: {name}}) => {
+  if (!name) {
     return null;
   }
 
@@ -78,7 +78,7 @@ const renderSupplier = ({supplierName}) => {
       <Container>
         <Icon name="hand spock outline"/>
         <Label>Supplier name:</Label>
-        {supplierName}
+        {name}
       </Container>
     </Header>
   );
