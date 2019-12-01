@@ -20,7 +20,7 @@ const login = (card, pin) => {
     .catch(e => console.log(e));
 };
 
-const getMoney = (amount) => api.post('/transactions/withdraw', {}, {params: {atmId: 1, amount: amount * 100}})
+const getMoney = (amount) => api.post('/transaction/withdraw', {}, {params: {atmId: 1, amount: amount * 100}})
   .catch(e => {
     throw _.get(e.request, 'responseText', e.message || JSON.stringify(e));
   });
