@@ -37,7 +37,7 @@ const renderAmount = ({amount}) => (
     <Container>
       <Icon name="money bill alternate outline"/>
       <Label>Amount:</Label>
-      ${amount}
+      ${Number(amount / 100).toFixed(2)}
     </Container>
   </Header>
 );
