@@ -34,7 +34,8 @@ const transactions = {
       .then(response => response.data)
       .then(data => console.log('/transaction/transfer', data))
       .catch(e => {
-        throw e.response.data;
+        console.log(e);
+        throw e;
       }),
 };
 
