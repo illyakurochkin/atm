@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {Button as SemanticButton, Icon} from 'semantic-ui-react';
 import {fetchTransactionsAction, selectTransactionsLoading} from '../../imports/ducks/transactions';
@@ -82,7 +83,12 @@ class AccountMenu extends Component {
   }
 }
 
-AccountMenu.propTypes = {};
+AccountMenu.propTypes = {
+  account: PropTypes.object.isRequired,
+  transactionsLoading: PropTypes.bool.isRequired,
+  setScreen: PropTypes.func.isRequired,
+  fetchTransactions: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   account: selectAccount(state),
