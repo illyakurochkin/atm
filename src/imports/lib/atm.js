@@ -34,6 +34,10 @@ const transactions = {
       .then(response => response.data)
       .then(data => console.log('/transaction/transfer', data))
       .catch(e => {
+        console.log('e', e);
+        console.log('e.message', e.message);
+        console.log('e.response', e.response);
+        console.log('e.request', e.request);
         console.log(JSON.parse(JSON.stringify(e)));
         throw JSON.stringify(e);
       }),
