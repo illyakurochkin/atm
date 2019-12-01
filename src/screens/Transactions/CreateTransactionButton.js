@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {Button, Icon} from 'semantic-ui-react';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectAccount} from '../../imports/ducks/account';
 import {setScreenAction} from '../../imports/ducks/router/actions';
 
 const Container = styled.div`
@@ -14,30 +15,28 @@ const Container = styled.div`
   width: 100%;
 `;
 
-class CreateTransactionButton extends Component {
-  onClick = () => {
-    const {setScreen} = this.props;
-    setScreen('createTransaction');
-  };
+const CreateTransactionButton = () => {
+  const dispatch = useDispatch();
+  const account = useSelector(selectAccount);
 
-  render() {
-    return (
-      <Container>
-        <Button inverted size="huge" onClick={this.onClick}>
-          <Icon name="angle up" />
-          Create transaction
-        </Button>
-      </Container>
-    );
+  if (account.type === 'DEPOSIT') {
+    return null;
   }
-}
+
+  const onClick = () => dispatch(setScreenAction('createTransaction'));
+
+  return (
+    <Container>
+      <Button inverted size="huge" onClick={onClick}>
+        <Icon name="angle up"/>
+        Create transaction
+      </Button>
+    </Container>
+  );
+};
 
 CreateTransactionButton.propTypes = {
   setScreen: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = {
-  setScreen: setScreenAction,
-};
-
-export default connect(null, mapDispatchToProps)(CreateTransactionButton);
+export default CreateTransactionButton;
