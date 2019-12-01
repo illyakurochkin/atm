@@ -40,7 +40,7 @@ const transactions = {
         console.log('e.response', e.response);
         console.log('e.request', e.request);
         console.log(JSON.parse(JSON.stringify(e)));
-        throw _.get(e.request, 'requestText', e.message || JSON.stringify(e));
+        throw _.get(e.request, 'responseText', e.message || JSON.stringify(e));
       }),
 };
 
