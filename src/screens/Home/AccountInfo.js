@@ -69,8 +69,8 @@ const renderCreditLimit = ({type, creditLimit}) => {
   );
 };
 
-const renderSupplier = ({supplier}) => {
-  if (!_.get(supplier, 'name')) {
+const renderSupplier = ({surplier}) => {
+  if (!_.get(surplier, 'name')) {
     return null;
   }
 
@@ -79,7 +79,7 @@ const renderSupplier = ({supplier}) => {
       <Container>
         <Icon name="hand spock outline"/>
         <Label>Supplier name:</Label>
-        {supplier.name}
+        {surplier.name}
       </Container>
     </Header>
   );
