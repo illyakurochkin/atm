@@ -18,4 +18,4 @@ const enhancer = composeEnhancers(
 export default () => createStore(
   rootReducer,
   enhancer,
-);
+)();
