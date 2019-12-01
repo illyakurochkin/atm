@@ -9,8 +9,8 @@ import {selectAccount} from '../../imports/ducks/account';
 import store from '../../imports/ducks/store';
 
 const validateCard = (receiverCard) => {
-  console.log('validator state', store().getState());
-  const myCard = selectAccount(store().getState()).number;
+  console.log('validator state', store.getState());
+  const myCard = selectAccount(store.getState()).number;
   return validateReceiverCard(myCard)(receiverCard);
 };
 
