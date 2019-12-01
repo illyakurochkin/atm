@@ -75,13 +75,22 @@ const renderSupplier = ({surplier}) => {
   }
 
   return (
-    <Header inverted>
-      <Container>
-        <Icon name="hand spock outline"/>
-        <Label>Supplier name:</Label>
-        {surplier.name}
-      </Container>
-    </Header>
+    <>
+      <Header inverted>
+        <Container>
+          <Icon name="hand spock outline"/>
+          <Label>Supplier name:</Label>
+          {surplier.name}
+        </Container>
+      </Header>
+      <Header inverted>
+        <Container>
+          <Icon name="hand lizard outline"/>
+          <Label>Supplier limit:</Label>
+          ${Number(surplier.limit / 100).toFixed(2)}
+        </Container>
+      </Header>
+    </>
   );
 };
 
