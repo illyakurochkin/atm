@@ -43,7 +43,7 @@ class AccountMenu extends Component {
     return (
       <Row>
         <ButtonContainer>
-          <Button inverted size="huge">
+          <Button inverted size="huge" onClick={() => setScreen('putMoney')}>
             <Icon name="angle up" />
             Put money
           </Button>

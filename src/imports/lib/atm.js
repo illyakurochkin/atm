@@ -25,6 +25,11 @@ const getMoney = (amount) => api.post('/transaction/withdraw', {}, {params: {atm
     throw _.get(e.request, 'responseText', e.message || JSON.stringify(e));
   });
 
+const putMoney = (amount) => api.post('/transaction/fill', {}, {params: {atmId: 1, amount: amount * 100}, headers})
+  .catch(e => {
+    throw _.get(e.request, 'responseText', e.message || JSON.stringify(e));
+  });
+
 const mapResponseToTransactions = (response) => response.data.map(transaction => ({
   ...transaction,
   amount: Number(transaction.amount / 100).toFixed(2),
@@ -52,5 +57,6 @@ const transactions = {
 export default {
   login,
   getMoney,
+  putMoney,
   transactions,
 };

@@ -4,6 +4,7 @@ import {selectAccount} from './../account';
 import Transactions from '../../../screens/Transactions';
 import CreateTransaction from '../../../screens/CreateTransaction';
 import GetMoney from '../../../screens/GetMoney';
+import PutMoney from '../../../screens/PutMoney';
 
 const SET_SCREEN = 'atm/router/SET_SCREEN';
 
@@ -13,6 +14,7 @@ export const screens = {
   transactions: Transactions,
   createTransaction: CreateTransaction,
   getMoney: GetMoney,
+  putMoney: PutMoney,
 };
 
 const INITIAL_STATE = 'auth';
