@@ -3,25 +3,12 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Field, formValueSelector, getFormSyncErrors, reduxForm} from 'redux-form';
 import {Button, Form, Message} from 'semantic-ui-react';
-import {normalizeAmount, normalizeCard} from '../../imports/utils/forms/normalizers';
-import {validateAmount, validateReceiverCard} from '../../imports/utils/forms/validators';
+import {normalizeAmount} from '../../imports/utils/forms/normalizers';
+import {validateAmount} from '../../imports/utils/forms/validators';
 import {selectAccount} from '../../imports/ducks/account';
-import store from '../../imports/ducks/store';
 
-const validateCard = (receiverCard) => {
-  console.log('validator state', store.getState());
-  const myCard = selectAccount(store.getState()).number;
-  return validateReceiverCard(myCard)(receiverCard);
-};
-
-const GetMoneyForm = ({handleSubmit, amount, receiverCard, errors}) => (
+const GetMoneyForm = ({handleSubmit, amount, errors}) => (
   <Form inverted onSubmit={handleSubmit} error={errors.length}>
-    <Field
-      name="receiverCard"
-      component={renderReceiverCardField}
-      normalize={normalizeCard(receiverCard)}
-      validate={validateCard}
-    />
     <Field
       name="amount"
       component={renderAmountField}
@@ -41,27 +28,19 @@ GetMoneyForm.propTypes = {
   errors: PropTypes.array.isRequired,
 };
 
-const renderReceiverCardField = (field) => (
-  <Form.Field>
-    <label>RECEIVER CARD NUMBER</label>
-    <input {...field.input} placeholder="Enter receiver card number"/>
-  </Form.Field>
-);
-
 const renderAmountField = (field) => (
   <Form.Field>
-    <label>MONEY AMOUNT TO SEND</label>
-    <input {...field.input} placeholder="Enter money amount to send"/>
+    <label>MONEY AMOUNT TO GET</label>
+    <input {...field.input} placeholder="Enter money amount"/>
   </Form.Field>
 );
 
-const form = 'createTransaction';
+const form = 'getMoney';
 const selector = formValueSelector(form);
 
 const mapStateToProps = state => ({
   myCard: selectAccount(state).number,
   amount: selector(state, 'amount'),
-  receiverCard: selector(state, 'receiverCard'),
   errors: Object.values(getFormSyncErrors(form)(state)),
 });
 

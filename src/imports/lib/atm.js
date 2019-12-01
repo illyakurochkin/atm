@@ -20,6 +20,11 @@ const login = (card, pin) => {
     .catch(e => console.log(e));
 };
 
+const getMoney = (amount) => api.post('/transactions/withdraw', {}, {params: {atmId: 1, amount: amount * 100}})
+  .catch(e => {
+    throw _.get(e.request, 'responseText', e.message || JSON.stringify(e));
+  });
+
 const mapResponseToTransactions = (response) => response.data.map(transaction => ({
   ...transaction,
   amount: Number(transaction.amount / 100).toFixed(2),
@@ -46,5 +51,6 @@ const transactions = {
 
 export default {
   login,
+  getMoney,
   transactions,
 };

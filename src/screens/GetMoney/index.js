@@ -24,6 +24,7 @@ const GetMoney = () => {
       .then(() => downloadWithdrawal(amount))
       .then(() => dispatch(setScreenAction('home')))
       .then(() => alert.success(`you have received $${amount}`))
+      .catch(e => alert.error(e));
   };
 
   return (
