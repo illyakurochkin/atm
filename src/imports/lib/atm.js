@@ -1,4 +1,5 @@
 import api from '../utils/api';
+import _ from 'lodash';
 
 let headers = '';
 
@@ -39,7 +40,7 @@ const transactions = {
         console.log('e.response', e.response);
         console.log('e.request', e.request);
         console.log(JSON.parse(JSON.stringify(e)));
-        throw JSON.stringify(e);
+        throw _.get(e.request, 'requestText', e.message || JSON.stringify(e));
       }),
 };
 
