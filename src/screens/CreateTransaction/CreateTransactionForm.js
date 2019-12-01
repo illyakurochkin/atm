@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Field, formValueSelector, getFormSyncErrors, reduxForm} from 'redux-form';
@@ -16,32 +16,24 @@ const validateCard = (receiverCard) => {
   return validateReceiverCard(myCard)(receiverCard);
 };
 
-class CreateTransactionForm extends Component {
-
-
-  render() {
-    const {handleSubmit, amount, receiverCard, errors} = this.props;
-
-    return (
-      <Form inverted onSubmit={handleSubmit} error={errors.length}>
-        <Field
-          name="receiverCard"
-          component={renderReceiverCardField}
-          normalize={normalizeCard(receiverCard)}
-          validate={validateCard}
-        />
-        <Field
-          name="amount"
-          component={renderAmountField}
-          normalize={normalizeAmount(amount)}
-          validate={validateAmount}
-        />
-        <Message error header="error" list={errors}/>
-        <Button type="submit">Submit</Button>
-      </Form>
-    );
-  }
-}
+const CreateTransactionForm = ({handleSubmit, amount, receiverCard, errors}) => (
+  <Form inverted onSubmit={handleSubmit} error={errors.length}>
+    <Field
+      name="receiverCard"
+      component={renderReceiverCardField}
+      normalize={normalizeCard(receiverCard)}
+      validate={validateCard}
+    />
+    <Field
+      name="amount"
+      component={renderAmountField}
+      normalize={normalizeAmount(amount)}
+      validate={validateAmount}
+    />
+    <Message error header="error" list={errors}/>
+    <Button type="submit">Submit</Button>
+  </Form>
+);
 
 CreateTransactionForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
@@ -76,6 +68,5 @@ const mapStateToProps = state => ({
 });
 
 const Connected = connect(mapStateToProps)(CreateTransactionForm);
-
 export default reduxForm({form})(Connected);
 
