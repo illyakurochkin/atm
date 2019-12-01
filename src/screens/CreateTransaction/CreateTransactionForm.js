@@ -6,10 +6,14 @@ import {Button, Form, Message} from 'semantic-ui-react';
 import {normalizeAmount, normalizeCard} from '../../imports/utils/forms/normalizers';
 import {validateAmount, validateReceiverCard} from '../../imports/utils/forms/validators';
 import {selectAccount} from '../../imports/ducks/account';
-import store from '../../imports/ducks/store';
+import configureStore from '../../imports/ducks/store';
 
 const validateCard = (receiverCard) => {
-  const myCard = selectAccount(store().getState()).number;
+  const store = configureStore();
+  console.log('fsf04230482=d-sf0=23042-=-402=4-204=2-034=-20');
+  console.log(store);
+  console.log(store.getState());
+  const myCard = selectAccount(store.getState()).number;
   return validateReceiverCard(myCard)(receiverCard);
 };
 

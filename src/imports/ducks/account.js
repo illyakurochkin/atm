@@ -8,10 +8,13 @@ const startLoadingAction = () => ({
   type: START_LOADING,
 });
 
-const receiveAccountAction = account => ({
-  type: RECEIVE_ACCOUNT,
-  account,
-});
+const receiveAccountAction = account => {
+  console.log('receive account action', account);
+  return ({
+    type: RECEIVE_ACCOUNT,
+    account,
+  });
+};
 
 export const loginAction = (card, pin) => async dispatch => {
   dispatch(startLoadingAction());
