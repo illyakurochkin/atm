@@ -3,9 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Provider} from 'react-redux';
-import store from './imports/ducks/store';
+import configureStore from './imports/ducks/store';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
+
+const store = configureStore();
 
 ReactDOM.render((
   <Provider store={store}>
