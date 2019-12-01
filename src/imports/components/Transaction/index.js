@@ -16,8 +16,8 @@ const Content = styled.div`
 
 class Transaction extends Component {
   renderIcon() {
-    const {transaction: {amount}} = this.props;
-    const name = amount > 0 ? 'angle double down' : 'angle double up';
+    const {transaction: {amount, type}} = this.props;
+    const name = amount > 0 ||  type === 'WITHDRAWAL' ? 'angle double down' : 'angle double up';
     const color = amount > 0 ? 'green' : 'red';
     return <Icon size="huge" name={name} color={color}/>;
   }
@@ -31,8 +31,8 @@ class Transaction extends Component {
           {this.renderIcon()}
           <Content>
             <div>{source}</div>
-            <div>{`Amount: $${Math.abs(amount)}`}</div>
-            <div>{`Commission: $${commission}`}</div>
+            <div>{`Amount: $${Math.abs(amount / 100)}`}</div>
+            <div>{`Commission: $${commission / 100}`}</div>
             <div>{`Date: ${dateTime}`}</div>
           </Content>
         </Grid>
