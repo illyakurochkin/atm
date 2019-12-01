@@ -30,7 +30,7 @@ const transactions = {
     .catch(e => console.log('/transactions', e)),
 
   create: ({receiverCard: receiverNumber, amount}) =>
-    api.post('/transaction/transfer', {}, {params: {receiverNumber, amount}, headers})
+    api.post('/transaction/transfer', {}, {params: {receiverNumber, amount: amount * 100}, headers})
       .then(response => response.data)
       .then(data => console.log('/transaction/transfer', data))
       .catch(e => {
