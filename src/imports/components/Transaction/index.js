@@ -31,8 +31,8 @@ class Transaction extends Component {
           {this.renderIcon()}
           <Content>
             <div>{source}</div>
-            <div>{`Amount: $${Math.abs(amount / 100)}`}</div>
-            <div>{`Commission: $${commission / 100}`}</div>
+            <div>{`Amount: $${Math.abs(amount)}`}</div>
+            <div>{`Commission: $${commission}`}</div>
             <div>{`Date: ${dateTime}`}</div>
           </Content>
         </Grid>

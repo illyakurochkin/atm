@@ -35,6 +35,7 @@ const putMoney = (amount) => api.post('/transaction/fill', {}, {params: {atmId: 
 const mapResponseToTransactions = (response) => response.data.map(transaction => ({
   ...transaction,
   amount: Number(transaction.amount / 100).toFixed(2),
+  commission: Number(transaction.commission / 100).toFixed(2),
 }));
 
 const transactions = {
